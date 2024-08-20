@@ -1,0 +1,28 @@
+*Date*: 16-07-2024
+*Developer's Name*: Saikumar Kamireddy
+
+*1. Code Development:*
+  a. Worked on lab billing in pos application. Discussed about the functionalities in the demo meeting with the moorty sir
+  b. Created the UI feilds required for the entering the customer data and for selecting the tests in the UI.
+  c. Connected with Api for fetching the tests list. Modified methods and added calculation for selecting and billing the lab tests.
+  d. Added validations for selecting and entering the customers and other required feilds. Tested the service in second server and verified the all the feilds are updating as required.
+  e. Completed the lab Invoice Print module and tested the response.
+
+ *2. Code Review and Debugging:*
+
+*3. Collaboration and Communication:* 
+ a. 
+
+*4. Testing and Integration:*  
+ a. 
+
+*5. Support Activity:*
+ a.  
+*6. Challenges and Solutions:* 
+
+*7. Learning and Research:*
+  a. 
+
+*8. Goals for Tomorrow:*
+
+

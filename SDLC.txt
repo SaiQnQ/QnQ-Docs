@@ -1,0 +1,237 @@
+
+
+
+06-08-2024
+___________________________________
+
+SDLC
+Water Fall method:
+
+
+1. Requirements:
+	FRD Walk through
+	
+2. Design:
+3. Development:
+4. Testing:
+	Certify their exit criteria
+5. Development:
+	Approval from the Product Owner (Definition of done, Expectation criteria)
+
+6. Maintenance:
+
+Advantages of SDLC Waterfall model
+
+Easy to Understand
+Individual Processing
+Clear Milestones
+
+Disadvantages:
+
+No feedback path
+Difficult to accommodate change Requests:
+No Overlapping
+Limited Flexibility
+Limited Stakeholder Involvement
+Late Defect Detection
+Lengthy Development Cycle
+
+
+When to Use Waterfall:
+
+Well-understood Requirements
+Very Little Changes Expected
+Small to medium-Sized Projects
+Predictable
+Regulatory Compliance
+Limited resources
+
+
+Agile is principle 
+Scrum (Product Owner, Scrum master, Development team)
+Kanban
+Scrumban
+Extreme Programming
+Crystal
+Feature Driven Development
+Lean
+
+353 Model
+
+Roles:
+
+PO, SM, DEV
+QA, BA, PM
+
+Events: Ceremonies
+
+Sprint
+Sprint Planning
+Daily Planning
+Sprint Review
+Sprint Retrospection
+
+
+Artifacts:
+
+Product Backlog (All Requirements of PO)
+Sprint Backlog (Requirement taken in a particular Sprint by DEV)
+Increment - Working Software Ready to Deploy Stage  (MVP)
+
+Sprint - (2-4 Weeks)
+Complex EPIC, break into small US (User Story). Estimation - BA
+
+
+07-08-2024
+_____________________
+
+EPIC
+
+US (User Story)
+
+INVEST Criteria
+INVEST is an acronym for Independent, Negotiable, Valuable, Estimable, Small (Simplicity), and Testable. These are the six key components of the INVEST criteria that must be present for a User Story to be considered high quality.
+
+Product backlog refinement (Arranging in a proper way)
+Prioritization
+
+If( INVEST Criteria DOR - Definition of ready ) {
+	Product backlog --> Sprint Backlog
+        Estimation(time)
+}
+Estimation(time){
+	Man Days
+	time Negotiation with data points
+	Start SDLC()
+}
+Start SDLC(){
+	...
+	DailyStatusReport
+	...
+
+	if(Impediment or Blockers){
+		Escalate to SM
+	}
+
+	SprintReveiw()
+}
+
+SprintReveiw(){
+	1. PO, SM Extremely Important Call
+	2. FRD and All Mails are Mandatory
+	
+	DOD (Definition of done) by PO
+	If(Approved){
+		Production
+	}else{
+	
+	}
+}
+
+
+--------------------------
+
+
+Spring Pillars:
+
+Transparency
+Inspection
+Adaptation
+
+
+5 Values of Scrum:
+
+Commitment
+Focus
+Openness - Predicting the defects before
+Respect
+Courage - Able to express to authorized 
+
+
+Straggled Release:
+80% 20% - Technical Debt
+
+
+
+Spike
+
+-------------------------------------------------------------------------------
+12th Aug On Leave
+
+Scrum Estimation:
+
+Estimation Techniques:
+
+Planning Poker
+T-Shirt Size
+Dot Voting
+The Bucket System
+
+
+---------------------------------------------------------------------------------
+
+
+Story Point
+
+It is a Relative Estimation Comparision. Between PB to SB
+
+After US - INVEST Criteria
+A - US 
+B - US
+
+A = x
+B = 2x
+
+Experienced Resource - 0.5 Day, 1 Day
+Less Exp Resource A= 2 Day, 4 Day
+
+Considerations of Story Point:
+
+1. The Amount of Work
+2. Complexity
+3. Risk (Not clear Requirement) and Uncertainty (We are going to new technology, which we haven't used before)
+
+Low amount of work, high Complexity - Business algorithm. HR Consultancy ?
+
+Work amount is work, Complex = V2, V3,
+
+
+
+Velocity
+
+Burndown chart
+
+
+
+--------------------------
+User Points in a Sprint Taken.
+
+
+
+MBORC
+Matters beyond our reasonable control
+
+
+Retrospection:
+
+
+1. Start, Stop and Continue
+2. Sailboat technique - Wind, Rock, Anchor, Sun
+3. Mad, Sad, Glad Technique
+4. 4L Technique - Liked, Learned, Lacked, Longed For
+5. Starfish technique - 5
+	a. Start Doing
+	b. Stop Doing
+	c. Less of
+	d. Keep doing
+	e. More of
+
+
+Agenda of retrospection:
+
+What went well
+What did not go well
+What can be improved
+
+
+

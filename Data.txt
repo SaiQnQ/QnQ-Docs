@@ -1,0 +1,53 @@
+Local Purchase Request - User Stories & Checklist
+Branch Purchase Consideration
+
+ Trigger System: Implement logic to compare branch stock against minimum stock levels and display "To Order" and "Stock Out" items.
+ Suggested Quantity: Auto-calculate and display the maximum quantity the branch can order.
+ Update Required Quantity: Allow manual updates to the required quantity on the purchase consideration screen.
+Purchase Requests
+
+ Item Details Visibility: Display pre-agreed items for local purchase to branch users.
+ Item Selection: Enable item selection from a dropdown and input for required quantity.
+ Supplier Selection: Add an optional dropdown for selecting suppliers during PR creation.
+Approval Process
+
+ Cluster Manager Approval: Implement logic for cluster manager approval, including editing the requested quantity.
+ Category Manager Approval: Add logic for category manager approval if the requested value exceeds the cluster manager's limit.
+ Procurement Team Review: Create a screen for the procurement team to review and cross-verify the requests, including altering quantities and notifying branches of changes.
+ PO Approval Process: Integrate the standard PO approval process with threshold limits and approval users.
+Post-Order Processing
+
+ Branch Visibility of Ordered Items: Allow branches to view ordered, rejected, partially approved, and pending items.
+ Inbound Stock Processing: Enable branches to acknowledge received stock, upload invoices, and validate quantities against the order.
+ Goods Return Process: Implement a goods return process that allows branches to initiate returns and communicate with suppliers.
+Reporting
+
+ Branch-Level Reports: Create reports for pending POs with aging for respective branches.
+ Warehouse-Level Reports: Develop reports for local purchase POs (pending & fulfilled) across all branches and by individual branch.
+Interbranch Stock Transfer - User Stories & Checklist
+Inter-branch Transfer Request Creation
+
+ Screen Development: Develop a screen for branches to create and manage stock transfer requests.
+ Real-Time Stock Search: Implement a search feature to check the availability of items at other branches.
+ Auto-Populate Item Details: Ensure the system auto-populates details like quantity, expiry date, batch number, item code, and MRP when an item is selected.
+ Multiple Items Request: Enable adding multiple items to a single transfer request.
+Request Acceptance
+
+ Initial Acceptance by Requestee Branch: Implement functionality for the requestee branch to review and accept or reject the transfer request.
+Approval Workflow
+
+ Cluster Manager Approval: Develop logic for Cluster Manager approval for requests up to Rs.2000.
+ Category Manager Approval: Implement approval logic for Category Managers for requests between Rs.2000 and Rs.5000.
+ Business Excellence Head Approval: Add approval logic for the Business Excellence Head for requests exceeding Rs.5000.
+Stock Transfer Execution
+
+ Outward Stock Processing: Enable the requestee branch to outward the stock once approved.
+ Warehouse Notification: Notify the warehouse about the stock transfer to update inventory.
+Inward Stock Processing
+
+ Stock Verification and Inwarding: Implement functionality for the requesting branch to verify and inward the received stock.
+ ERP Update: Ensure the ERP system marks the stock as transferred from the respective branch.
+Monitoring and Reporting
+
+ Unsold Stock Reporting: Develop a report for items that remain unsold for more than 7 days, notifying the relevant authorities.
+ Inventory Update: Ensure the ERP reflects the stock transfer accurately in the inventory system.

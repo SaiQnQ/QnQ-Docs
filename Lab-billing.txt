@@ -1,0 +1,52 @@
+Changes in Lab-billing:
+
+1. To view List of lab tests
+2. Discount fields to apply discount by pharmasists
+3. default 20 % Discount on MRP Value is rate.
+4. GST calculation 6% CGST and 6% SCGST.
+5. invoice show after submitting.
+6. Location or pincode in customer registration form
+
+
+As discussed 
+1. Added options to enter damaged Qty and Expired Qty stock while auditing.
+2. Displaying audit items in tabs to differentiate difference audit items
+3. In Super User Stock Update service with the difference qty in the stock Audit
+4. In ERP Manager login page to display audit completed list and options to veiw, approve and reject. in audit master table collecting the approval status
+
+Pending works:
+
+Mail Integration - required manager hirarcy details
+Inward Hold validation after audit complete and approval
+
+
+Before Stock Approve Confirmation and details to be display to the user.
+Disapproval
+Temp Qty
+In Stock Audit Master for taking the status
+	Incharge Manager
+	Cluster Manager
+	Reginal Manager
+
+
+To integrate in ERP need to work on UI to display this details in the 
+
+
+Inward Hold
+Mail farward Option have to be included
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,215 @@
+
+***************************************************************************
+In ServiceDAO Class 
+
+*************************************************************************
+
+
+public void addBranchInternalStockAudit(BranchInternalStockAudit audit) {
+	  TransactionDefinition def = new DefaultTransactionDefinition();
+	  TransactionStatus status = this.getTransactionManager().getTransaction(def);
+	  try {
+          String auditFileUrlsJson = gson.toJson(audit.AuditFileUrl);
+	      String sql = "INSERT INTO branchinternalstockaudit (BranchRefId, AuditBy, ExcessQty, ShortageQty, CurrentQty, PhysicalQty, Remarks, AuditFileUrl, Created_By, Modified_By, Created_Date, Modified_Date, Active, Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	      this.getJdbcTemplate().update(sql,
+	          audit.BranchRefId,
+	          audit.AuditBy,
+	          audit.ExcessQty,
+	          audit.ShortageQty,
+	          audit.CurrentQty,
+	          audit.PhysicalQty,
+	          audit.Remarks,
+	          auditFileUrlsJson,
+	          audit.Created_By,
+	          audit.Modified_By,
+	          new Timestamp(System.currentTimeMillis()),
+	          audit.Modified_Date,
+	          1,
+	          1
+	      );
+	      this.getTransactionManager().commit(status);
+	  } catch (Throwable t) {
+	      this.getTransactionManager().rollback(status);
+	      throw t;
+	  }
+	}
+	
+	  
+	  public List<BranchInternalStockAudit> getAllBranchInternalStockAudit() {
+	        String sql = "SELECT * FROM branchinternalstockaudit";
+	        return this.getJdbcTemplate().query(sql, new RowMapper<BranchInternalStockAudit>() {
+	        	 @Override
+	             public BranchInternalStockAudit mapRow(ResultSet rs, int rowNum) throws SQLException {
+	            BranchInternalStockAudit audit = new BranchInternalStockAudit();
+	            audit.Id = rs.getInt("Id");
+	            audit.BranchRefId=rs.getInt("BranchRefId");
+	            audit.ExcessQty = rs.getInt("ExcessQty");
+	            audit.ShortageQty=rs.getInt("ShortageQty");
+	            audit.CurrentQty = rs.getInt("CurrentQty");
+	            audit.PhysicalQty=rs.getInt("PhysicalQty");
+	            
+	            audit.AuditBy = rs.getString("AuditBy");
+	            audit.Remarks=rs.getString("Remarks");
+	            String auditFileUrlsJson = rs.getString("AuditFileUrl");
+	            if (auditFileUrlsJson != null && !auditFileUrlsJson.isEmpty()) {
+	                try {
+	                    // Ensure it's deserialized as a list
+	                    List<String> auditFileUrls = gson.fromJson(auditFileUrlsJson, new TypeToken<List<String>>(){}.getType());
+	                    audit.AuditFileUrl=auditFileUrls;
+	                } catch (JsonSyntaxException e) {
+	                    // Handle the case where auditFileUrlsJson is not a JSON array
+	                    audit.AuditFileUrl=Collections.singletonList(auditFileUrlsJson);
+	                }
+	            }
+	            audit.Created_By=rs.getString("Created_By");
+	            audit.Modified_By=rs.getString("Modified_By");
+	            
+	            audit.Active = rs.getInt("Active");
+	            audit.Status=rs.getInt("Status");
+	            audit.Created_Date = rs.getTimestamp("Created_Date");
+	            audit.Modified_Date=rs.getTimestamp("Modified_Date");
+	            // Set other properties as needed
+	            return audit;
+	        	 }
+	        });
+	    }
+
+	    public List<BranchInternalStockAudit> getAllBranchInternalStockAuditByBranch(String branchId) {
+	        String sql = "SELECT * FROM branchinternalstockaudit WHERE branchRefId = ?";
+	        return this.getJdbcTemplate().query(sql, new Object[]{branchId}, new RowMapper<BranchInternalStockAudit>() {
+	        	 @Override
+	             public BranchInternalStockAudit mapRow(ResultSet rs, int rowNum) throws SQLException {
+	            BranchInternalStockAudit audit = new BranchInternalStockAudit();
+	            audit.Id = rs.getInt("Id");
+	            audit.BranchRefId=rs.getInt("BranchRefId");
+	            audit.ExcessQty = rs.getInt("ExcessQty");
+	            audit.ShortageQty=rs.getInt("ShortageQty");
+	            audit.CurrentQty = rs.getInt("CurrentQty");
+	            audit.PhysicalQty=rs.getInt("PhysicalQty");
+	            
+	            audit.AuditBy = rs.getString("AuditBy");
+	            audit.Remarks=rs.getString("Remarks");
+//	            String auditFileUrlsJson = rs.getString("AuditFileUrl");
+//	            audit.AuditFileUrl = gson.fromJson(auditFileUrlsJson, new TypeToken<List<String>>(){}.getType());
+	            
+	            String auditFileUrlsJson = rs.getString("AuditFileUrl");
+	            if (auditFileUrlsJson != null && !auditFileUrlsJson.isEmpty()) {
+	                // Ensure it's deserialized as a list
+	                List<String> auditFileUrls = gson.fromJson(auditFileUrlsJson, new TypeToken<List<String>>(){}.getType());
+//	                audit.setAuditFileUrls(auditFileUrls);
+	                audit.AuditFileUrl = auditFileUrls;
+	            }
+	            
+	            audit.Created_By=rs.getString("Created_By");
+	            audit.Modified_By=rs.getString("Modified_By");
+	            
+	            audit.Active = rs.getInt("Active");
+	            audit.Status=rs.getInt("Status");
+	            audit.Created_Date = rs.getTimestamp("Created_Date");
+	            audit.Modified_Date=rs.getTimestamp("Modified_Date");
+	            // Set other properties as needed
+	            return audit;
+	        	 }
+	        });
+	    }
+
+**********************************************************************************************************************************************************************************
+
+IN WebServiceImpl Class
+**********************************************************************************************************************************************************************************
+
+		  @POST
+		  @Path("/addBranchInternalStockAudit")
+		  @Consumes(MediaType.APPLICATION_JSON)
+		  public ResponseInfo addBranchInternalStockAudit(@RequestBody BranchInternalStockAudit auditDTO, @Context final HttpServletResponse response) {
+		      ResponseInfo responseInfo = new ResponseInfo();
+		      try {
+		          log.info("REST service - addBranchInternalStockAudit");
+		
+		          getDao().addBranchInternalStockAudit(auditDTO);
+		          responseInfo.setIsError(Boolean.FALSE);
+		          responseInfo.setOutput("Branch internal stock audit added successfully.");
+		      } catch (Throwable t) {
+		          t.printStackTrace();
+		          List<String> errors = new ArrayList<>();
+		          errors.add("Error adding branch internal stock audit: " + t.getMessage());
+		          responseInfo.setIsError(Boolean.TRUE);
+		          responseInfo.setErrors(errors);
+		      }
+		      return responseInfo;
+		  }
+		  
+		  @GET
+		  @Path("/getAllBranchInternalStockAudit")
+		  public ResponseInfo getAllBranchInternalStockAudit() {
+		      ResponseInfo responseInfo = new ResponseInfo();
+		      try {
+		          log.info("REST service - getAllBranchInternalStockAudit");
+
+		          // Call DAO method to fetch all audits
+		          List<BranchInternalStockAudit> audits = getDao().getAllBranchInternalStockAudit();
+		          
+		          // Convert list to JSON
+		          responseInfo.setOutput(gsondate.toJson(audits));
+		          responseInfo.setIsError(Boolean.FALSE);
+		          return responseInfo;
+
+		      } catch (Throwable t) {
+		          t.printStackTrace();
+		          List<String> errors = new ArrayList<>();
+		          errors.add("Error fetching all branch internal stock audits: " + t.getMessage());
+		          responseInfo.setIsError(Boolean.TRUE);
+		          responseInfo.setErrors(errors);
+		          return responseInfo;
+		      }
+		  }
+
+		  @GET
+		  @Path("/getAllBranchInternalStockAuditByBranch")
+		  public ResponseInfo getAllBranchInternalStockAuditByBranch(@Context final HttpServletRequest request,
+		                                                        @Context final HttpServletResponse response) {
+		      ResponseInfo responseInfo = new ResponseInfo();
+		      try {
+		          log.info("REST service - getAllBranchInternalStockAuditByBranch");
+
+		          String branchRefId = request.getParameter("branchRefId");
+
+		          if (branchRefId == null || branchRefId.isEmpty()) {
+		              List<String> errors = new ArrayList<>();
+		              errors.add("Missing branchRefId parameter");
+		              responseInfo.setIsError(Boolean.TRUE);
+		              responseInfo.setErrors(errors);
+		              return responseInfo;
+		          }
+
+		          // Call DAO method to fetch audits by branch
+		          List<BranchInternalStockAudit> audits = getDao().getAllBranchInternalStockAuditByBranch(branchRefId);
+		          
+		          // Convert list to JSON
+		          responseInfo.setOutput(gsondate.toJson(audits));
+		          responseInfo.setIsError(Boolean.FALSE);
+		          return responseInfo;
+
+		      } catch (Throwable t) {
+		          t.printStackTrace();
+		          List<String> errors = new ArrayList<>();
+		          errors.add("Error fetching branch internal stock audits by branch: " + t.getMessage());
+		          responseInfo.setIsError(Boolean.TRUE);
+		          responseInfo.setErrors(errors);
+		          return responseInfo;
+		      }
+		  }
+
+
+
+****************************************************************
+Class BranchInternalStockAudit
+****************************************************************
+public class BranchInternalStockAudit {
+	
+    public String AuditBy, Remarks,  Created_By, Modified_By;
+    public Integer ExcessQty,ShortageQty,CurrentQty, PhysicalQty, Active, Status, BranchRefId, Id;
+    public Timestamp Created_Date, Modified_Date;
+    public List<String> AuditFileUrl;
+
+}
