@@ -1,5 +1,0 @@
-SELECT il.subcategory, bd.ItemName,bm.MobileNo, bm.ClientName FROM billmaster bm
-JOIN billdetails bd ON bm.Id = bd.CusRefId
-JOIN itemlist il ON bd.MolecularCode = il.newcode
-WHERE il.subcategory = 'Chronic'
-AND bm.InvoiceDate = DATE_SUB(CURDATE(), INTERVAL 30 DAY);
