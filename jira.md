@@ -1,9 +1,5 @@
 # Jira
 
-# Index
-
-## Navigation
-
 1. [Projects](#projects)
 2. [Issues](#issues)
    - [Types](#types)
@@ -45,7 +41,8 @@
   - Completion or Done
 
 ### 5. Sprints
-
+   a. Timeboard evenet (2-4 weeks)
+      
 ### 6. Backlogs
 - A list of tasks that the team needs to work on:
   1. **Product Backlog (PB)**
@@ -55,3 +52,17 @@
 - **Burndown Charts**
 - **Velocity Charts**
 - **Flow Diagrams**
+
+# Types of JIRA Products
+
+1. JIRA Software
+   a. For tracking S/w Development, Team
+   b. Agile Framework (Scrum, Kanban)
+2. (JIRA Service Desk), JIRA Service management
+   (ServiceNow as an example to enhance our current in house IT system tool)
+   a. ITSM team, Customer Support and helpdesk
+3. JIRA Workflow management
+   a. Non-technical teams, general projects status tracking.
+4. JIRA Align
+   a. Enterprise solution for large business
+   
